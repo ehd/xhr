@@ -34,12 +34,6 @@ function createXHR(options, callback) {
     var sync = !!options.sync
     var isJson = false
 
-    if ("json" in options) {
-        isJson = true
-        headers["Content-Type"] = "application/json"
-        body = JSON.stringify(options.json)
-    }
-
     xhr.onreadystatechange = readystatechange
     xhr.onload = load
     xhr.onerror = error
@@ -86,12 +80,6 @@ function createXHR(options, callback) {
             error = new Error(message)
 
             error.statusCode = xhr.status
-        }
-
-        if (isJson) {
-            try {
-                body = xhr.body = JSON.parse(body)
-            } catch (e) {}
         }
 
         callback(error, xhr, body)
