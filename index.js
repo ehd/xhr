@@ -1,5 +1,7 @@
 var window = require("global/window")
 var once = require("once")
+var keys = require('lodash.keys');
+var forEach = require('lodash.foreach');
 
 var messages = {
     "0": "Internal XMLHttpRequest Error"
@@ -53,7 +55,7 @@ function createXHR(options, callback) {
     }
 
     if ( xhr.setRequestHeader) {
-        Object.keys(headers).forEach(function (key) {
+        forEach(keys(headers), function (key) {
             xhr.setRequestHeader(key, headers[key])
         })
     }

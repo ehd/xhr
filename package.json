@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "once": "~1.1.1",
-    "global": "~2.0.7"
+    "global": "~2.0.7",
+    "lodash.keys": "~2.4.1",
+    "lodash.foreach": "~2.4.1"
   },
   "devDependencies": {
     "tap": "~0.3.1"
