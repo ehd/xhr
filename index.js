@@ -2,9 +2,7 @@ var window = require("global/window")
 var once = require("once")
 
 var messages = {
-    "0": "Internal XMLHttpRequest Error",
-    "4": "4xx Client Error",
-    "5": "5xx Server Error"
+    "0": "Internal XMLHttpRequest Error"
 }
 
 var XHR = window.XMLHttpRequest || noop
@@ -82,7 +80,7 @@ function createXHR(options, callback) {
         var body = xhr.body = xhr.response ||
             xhr.responseText || xhr.responseXML
 
-        if (status === 0 || (status >= 400 && status < 600)) {
+        if (status === 0) {
             var message = xhr.responseText ||
                 messages[String(xhr.status).charAt(0)]
             error = new Error(message)
